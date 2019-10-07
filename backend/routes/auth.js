@@ -25,19 +25,13 @@ function findUser(email, password) {
         console.log('connected as id ' + connection.threadId);
     });
 
-    // const user = connection.query('SELECT * FROM Users WHERE EMAIL= ? AND PASSWORD = ? ', [email, password], function (error, result) {
-    //     if (error) throw error;
-    //     console.log('The solution is: ', result);
-    //     return result;
-    // });
-
     return new Promise(function (resolve, reject) {
-        connection.query('SELECT * FROM Users WHERE EMAIL= ? AND PASSWORD = ? ', [email, password], function (error, result) {
+        connection.query('SELECT * FROM USERS WHERE EMAIL= ? AND PASSWORD = ? ', [email, password], function (error, result) {
             if (error)
                 reject(error);
             else {
                 console.log('result', result);
-                connection.end();
+                // connection.end();
                 resolve(result);
             }
         });
